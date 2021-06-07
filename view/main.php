@@ -9,6 +9,8 @@
 <form method="POST" action="<?php echo __SITE_URL . '/index.php?rt=main/search'?>">
     <input type="radio" name="source_type" id="map_centre" value="map_centre"/>
     <label for="map_centre">Najbliža točka središtu mape</label>
+    <input type="text" name="map_lat" id="mlat" readonly/>
+    <input type="text" name="map_lon" id="mlon" readonly/>
     <br/>
     <input type="radio" name="source_type" id="lat_lon" value="lat_lon"/>
     <label for="lat_lon">Unesite zemljopisnu širinu i dužinu u stupnjevima:</label>
