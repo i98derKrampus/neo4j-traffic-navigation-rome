@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf8">
-	<title>ebuy</title>
+	<title>Navigacija</title>
 	<link rel="stylesheet" href="<?php echo __SITE_URL;?>/css/style.css">
 </head>
 <body>
