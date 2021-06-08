@@ -27,19 +27,19 @@
         <input type="text" name="text_name_search"/>
         <br/>
 
-    <button type="submit" name="add_pt1" id="origin">Dodaj ishodište!</button>
-    <button type="submit" name="add_pt2" id="destination">Dodaj odredište!</button>
-    <br/>
+        <button type="submit" name="add_pt1" id="origin">Dodaj ishodište!</button>
+        <button type="submit" name="add_pt2" id="destination">Dodaj odredište!</button>
+        <br/>
         <button type="submit" name="find_path">Nađi najkraći put!</button>
         <button type="submit" name="find_path">Nađi najkraći put!</button>
-</form>
+    </form>
 
     <h4>Trenutno ishodište:</h4>
-        <?php echo $pt1; ?>
+<?php echo $pt1; ?>
     <br/>
 
     <h4>Trenutno odredište:</h4>
-        <?php echo $pt2; ?>
+<?php echo $pt2; ?>
 
 
     <script>
@@ -59,7 +59,7 @@
             openLayerMap = L.map('mapa').setView(
                 [41.89536138648265, 91452.48424530031],
                 12.5
-                );
+            );
             markerClusters = L.markerClusterGroup;
             L.tileLayer(
                 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
