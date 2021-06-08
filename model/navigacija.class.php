@@ -22,7 +22,7 @@ class Navigacija
         if( $row === false )
             return null;
 		else
-			return new Tocka( $row['id'], $row['x'], $row['y'],$row['lat'], $row['lon'], $row['name']);
+			return new Tocka( $row['id'], $row['x'], $row['y'],$row['latitude'], $row['longitude'], $row['name']);
 	}
 
 	function getClosestTockaFromLatLon($lat, $lon){
@@ -39,7 +39,7 @@ class Navigacija
 
 		$row = $results[0]->get('p');
 
-		return new Tocka($row['id'], $row['x'], $row['y'], $row['lat'], $row['lon'], $row['name']);
+		return new Tocka($row['id'], $row['x'], $row['y'], $row['latitude'], $row['longitude'], $row['name']);
 	}
 
 	
