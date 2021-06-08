@@ -75,8 +75,8 @@ class Navigacija
 			$i++;
 		}
 		$array_distances = $results[0]->get('costs');
-		$total_distane = $results[0]->get('totalDistance');
-		$final_array = array('totalDistance' => $total_distane,
+		$total_distance = $results[0]->get('totalCost');
+		$final_array = array('totalDistance' => $total_distance,
 							'tocke' => $array_nodes,
 							'distances' => $array_distances
 		);
@@ -117,8 +117,8 @@ class Navigacija
 			$i++;
 		}
 		$array_distances = $results[0]->get('costs');
-		$total_distane = $results[0]->get('totalDistance');
-		$final_array = array('totalDistance' => $total_distane,
+		$total_distance = $results[0]->get('totalCost');
+		$final_array = array('totalDistance' => $total_distance,
 							'tocke' => $array_nodes,
 							'distances' => $array_distances
 		);
@@ -159,8 +159,8 @@ class Navigacija
 			$i++;
 		}
 		$array_distances = $results[0]->get('costs');
-		$total_distane = $results[0]->get('totalTime');
-		$final_array = array('totalDistance' => $total_distane,
+		$total_distance = $results[0]->get('totalCost');
+		$final_array = array('totalTime' => $total_distance,
 							'tocke' => $array_nodes,
 							'times' => $array_distances
 		);
@@ -202,8 +202,8 @@ class Navigacija
 			$i++;
 		}
 		$array_distances = $results[0]->get('costs');
-		$total_distane = $results[0]->get('totalDistance');
-		$final_array = array('totalTime' => $total_distane,
+		$total_distance = $results[0]->get('totalCost');
+		$final_array = array('totalTime' => $total_distance,
 							'tocke' => $array_nodes,
 							'times' => $array_distances
 		);
