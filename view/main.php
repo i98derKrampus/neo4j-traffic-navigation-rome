@@ -32,11 +32,11 @@
 </form>
 
 <h4>Trenutno ishodište:</h4>
-<?php echo $pt1; ?>
+<span id="ishodiste"><?php echo $pt1; ?></span>
 <br/>
 
 <h4>Trenutno odredište:</h4>
-<?php echo $pt2; ?>
+<span id="odrediste"><?php echo $pt2; ?></span>
 
 
     <script>
@@ -52,6 +52,39 @@ $(document).ready(function()
 
     $("#mapa").on("mouseleave", updateCenterMap);
     setInterval(updateCenterMap, 100);
+
+    $("body").on('click', "span", function(){
+        let id = $(this).attr("id");
+        if(id === "ishodiste"){
+            let source_lat = "<?php 
+                if(is_null($pt1_lat)){
+                    echo "null";
+                } else{
+                    echo $pt1_lat;
+                }?>";
+            if(source_lat !== "null"){
+                let source_lon = <?php echo $pt1_lon;?>;
+                source_lat = parseFloat(source_lat);
+                openLayerMap.getView().setCenter(ol.proj.fromLonLat([source_lon, source_lat]));
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+        }
+        if(id === "odrediste"){
+            let target_lat = "<?php 
+                if(is_null($pt2_lat)){
+                    echo "null";
+                } else{
+                    echo $pt2_lat;
+                }?>";
+            if(target_lat !== "null"){
+                let target_lon = <?php echo $pt2_lon;?>;
+                target_lat = parseFloat(target_lat);
+                openLayerMap.getView().setCenter(ol.proj.fromLonLat([target_lon, target_lat]));
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+        }
+        
+    })
 
 });
 

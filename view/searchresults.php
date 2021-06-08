@@ -43,7 +43,7 @@ $(document).ready(function()
     {
         let span = $("<span>");
         span.attr("id", "tocka_"+tocka.id);
-        span.html(tocka.lat+"N " + tocka.lon + "E " + tocka.name);
+        span.html(tocka.lat+"&deg;N " + tocka.lon + "&deg;E " + tocka.name);
         $("body").append(span).append("<br/>");
         let element = document.createElement('div');
         if(i === 0 || i === j){
