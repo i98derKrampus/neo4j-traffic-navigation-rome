@@ -93,6 +93,7 @@ class MainController extends BaseController
 			
 			$this->registry->template->title = 'Navigacija';
 			$this->registry->template->type = "Najkraći put";
+			$this->registry->template->unit = "m";
 			$this->registry->template->totalDistance = $result["totalDistance"];
 			$this->registry->template->tocke = $result["tocke"];
 			$this->registry->template->distances = $result["distances"];
@@ -112,6 +113,7 @@ class MainController extends BaseController
 			
 			$this->registry->template->title = 'Navigacija';
 			$this->registry->template->type = "Najbrži put";
+			$this->registry->template->unit = "s";
 			$this->registry->template->totalDistance = $result["totalTime"];
 			$this->registry->template->tocke = $result["tocke"];
 			$this->registry->template->distances = $result["times"];
