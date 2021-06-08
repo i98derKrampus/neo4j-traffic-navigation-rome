@@ -91,11 +91,37 @@ class MainController extends BaseController
 
 			$result = $ns->getShortestPathDijkstra($_SESSION["pt1_id"], $_SESSION["pt2_id"]);
 			
-			$this->index();
+			$this->registry->template->title = 'Navigacija';
+			$this->registry->template->type = "Najkraći put";
+			$this->registry->template->totalDistance = $result["totalDistance"];
+			$this->registry->template->tocke = $result["tocke"];
+			$this->registry->template->distances = $result["distances"];
+
+			$this->registry->template->show('searchresults');
 			return;
 		}
 
+		if(isset($_POST["find_path_quickest"])){
+			if(!isset($_SESSION["pt1_id"]) ||
+				!isset($_SESSION["pt2_id"])){
+				$this->index();
+				return;
+			}
 
+			$result = $ns->getQuickestPathDijkstra($_SESSION["pt1_id"], $_SESSION["pt2_id"]);
+			
+			$this->registry->template->title = 'Navigacija';
+			$this->registry->template->type = "Najbrži put";
+			$this->registry->template->totalDistance = $result["totalTime"];
+			$this->registry->template->tocke = $result["tocke"];
+			$this->registry->template->distances = $result["times"];
+
+			$this->registry->template->show('searchresults');
+			return;
+		}
+
+		$this->index();
+		return;
 	}
 }
 

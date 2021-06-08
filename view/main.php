@@ -32,6 +32,7 @@
     <button type="submit" name="add_pt2">Dodaj odredište!</button>
     <br/>
     <button type="submit" name="find_path">Nađi najkraći put!</button>
+    <button type="submit" name="find_path_quickest">Nađi najbrži put!</button>
 </form>
 
 <h4>Trenutno ishodište:</h4>
