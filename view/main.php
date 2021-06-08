@@ -41,6 +41,9 @@
 
     <script>
 let openLayerMap = null;
+let centerMarker = null;
+let sourceMarker = null;
+let targetMarker = null;
 
 $(document).ready(function()
 {
@@ -69,6 +72,57 @@ function loadMap(centerLat = 41.8988, centerLon = 12.5451)
             )
         }
     );
+    let centerMarker_div = document.createElement('div');
+    centerMarker_div.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=50&color=DC4C3F&icon=fa-microchip&hoffset=1" />';
+    centerMarker = new ol.Overlay({
+            position: ol.proj.fromLonLat([centerLon, centerLat]),
+            positioning: 'center-center',
+            element: centerMarker_div,
+            stopEvent: false
+    });
+    openLayerMap.addOverlay(centerMarker);
+
+    let source_lat = "<?php 
+            if(is_null($pt1_lat)){
+                echo "null";
+            } else{
+                echo $pt1_lat;
+            }
+        ?>";
+    if(source_lat !== "null"){
+        let source_lon = <?php echo $pt1_lon;?>;
+        source_lat = parseFloat(source_lat);
+        let sourceMarker_div = document.createElement('div');
+        sourceMarker_div.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=40&color=0000FF&icon=fa-microchip&hoffset=1" />';
+        sourceMarker = new ol.Overlay({
+            position: ol.proj.fromLonLat([source_lon, source_lat]),
+            positioning: 'center-center',
+            element: sourceMarker_div,
+            stopEvent: false
+        });
+        openLayerMap.addOverlay(sourceMarker);
+    }
+
+    let target_lat = "<?php 
+            if(is_null($pt2_lat)){
+                echo "null";
+            } else{
+                echo $pt2_lat;
+            }
+        ?>";
+    if(target_lat !== "null"){
+        let target_lon = <?php echo $pt2_lon;?>;
+        target_lat = parseFloat(target_lat);
+        let targetMarker_div = document.createElement('div');
+        targetMarker_div.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=40&color=0000FF&icon=fa-microchip&hoffset=1" />';
+        targetMarker = new ol.Overlay({
+            position: ol.proj.fromLonLat([target_lon, target_lat]),
+            positioning: 'center-center',
+            element: targetMarker_div,
+            stopEvent: false
+        });
+        openLayerMap.addOverlay(targetMarker);
+    }
 }
 
 function updateCenterMap()
@@ -81,6 +135,7 @@ function updateCenterMap()
 
     $("#map_lat").val(coords[1].toString());
     $("#map_lon").val(coords[0].toString());
+    centerMarker.setPosition(ol.proj.fromLonLat(coords));
 }
 
 

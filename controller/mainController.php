@@ -8,17 +8,25 @@ class MainController extends BaseController
 		$this->registry->template->title = 'Navigacija';
 		if(!isset($_SESSION["pt1_id"])){
 			$this->registry->template->pt1 = " nije odabrano";
+			$this->registry->template->pt1_lat = null;
+			$this->registry->template->pt1_lon = null;
 		} else{
 			$pt1 = $ns->getTockaById($_SESSION["pt1_id"]);
 			$this->registry->template->pt1 =
 				 " " . ($pt1->lat) . "N " . ($pt1->lon) . "E";
+			$this->registry->template->pt1_lat = $pt1->lat;
+			$this->registry->template->pt1_lon = $pt1->lon;
 		}
 		if(!isset($_SESSION["pt2_id"])){
 			$this->registry->template->pt2 = " nije odabrano";
+			$this->registry->template->pt2_lat = null;
+			$this->registry->template->pt2_lon = null;
 		} else{
 			$pt2 = $ns->getTockaById($_SESSION["pt2_id"]);
 			$this->registry->template->pt2 =
 				 " " . ($pt2->lat) . "N " . ($pt2->lon) . "E";
+			$this->registry->template->pt2_lat = $pt2->lat;
+			$this->registry->template->pt2_lon = $pt2->lon;
 		}
         $this->registry->template->show( 'main' );
 	}
