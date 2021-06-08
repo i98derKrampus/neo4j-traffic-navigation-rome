@@ -1,24 +1,20 @@
 <?php
 
-class Lokacija_od_interesa extends Tocka
+class Tocka
 {
-	protected $name;
+	protected $id, $x, $y, $lat, $lon;
 
-	function __construct( $id, $x, $y, $lat, $lon, $name )
+	function __construct( $id, $x, $y, $lat, $lon )
 	{
-		$this->name = $name;
+		$this->lat = $lat;
+        $this->lon = $lon;
 		$this->id = $id;
 		$this->x = $x;
 		$this->y = $y;
-		$this->lon = $lon;
-		$this->lat = $lat;
-		
 	}	
 
 	function __get( $prop ) { return $this->$prop; }
 	function __set( $prop, $val ) { $this->$prop = $val; return $this; }
 }
 
-
 ?>
-
