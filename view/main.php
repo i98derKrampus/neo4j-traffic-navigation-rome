@@ -1,16 +1,14 @@
 <?php require_once __SITE_PATH . '/view/_header.php'; ?>
 
-<?php echo $loi->__get('name'); ?>
-
 <div id="mapa"></div>
 
 <br/>
 
 <form method="POST" action="<?php echo __SITE_URL . '/index.php?rt=main/search'?>">
-    <input type="radio" name="source_type" id="map_centre" value="map_centre"/>
+    <input type="radio" name="source_type" id="map_centre" value="map_centre" checked/>
     <label for="map_centre">Najbliža točka središtu mape</label>
-    <input type="text" name="map_lat" id="mlat" readonly/>
-    <input type="text" name="map_lon" id="mlon" readonly/>
+    <input type="text" name="map_lat" id="map_lat" readonly/>
+    <input type="text" name="map_lon" id="map_lon" readonly/>
     <br/>
     <input type="radio" name="source_type" id="lat_lon" value="lat_lon"/>
     <label for="lat_lon">Unesite zemljopisnu širinu i dužinu u stupnjevima:</label>
@@ -35,5 +33,68 @@
     <br/>
     <button type="submit" name="find_path">Nađi najkraći put!</button>
 </form>
+
+<h4>Trenutno ishodište:</h4>
+<?php echo $pt1; ?>
+<br/>
+
+<h4>Trenutno odredište:</h4>
+<?php echo $pt2; ?>
+
+
+    <script>
+let openLayerMap = null;
+
+$(document).ready(function()
+{
+    loadMap();
+    updateCenterMap();
+
+    $("#mapa").on("mouseleave", updateCenterMap);
+    setInterval(updateCenterMap, 100);
+
+});
+
+function loadMap(centerLat = 41.8988, centerLon = 12.5451)
+{
+    openLayerMap = new ol.Map(
+        {
+            target: "mapa",
+            layers:
+            [
+                new ol.layer.Tile({source: new ol.source.OSM()})
+            ],
+            view: new ol.View(
+                {
+                    center: ol.proj.fromLonLat([centerLon, centerLat]),
+                    zoom: 9
+                }
+            )
+        }
+    );
+}
+
+function updateCenterMap()
+{
+    let coords = ol.proj.transform(
+        openLayerMap.getView().getCenter(),
+        openLayerMap.getView().getProjection().getCode(),
+        'EPSG:4326'
+    );
+
+    $("#map_lat").val(coords[0].toString());
+    $("#map_lon").val(coords[1].toString());
+}
+
+
+
+
+
+
+
+
+
+
+    </script>
 
 <?php require_once __SITE_PATH . '/view/_footer.php'; ?>
