@@ -32,7 +32,7 @@ class MainController extends BaseController
 				$this->index();
 				return;
 			}
-			if(!in_array($_POST["source_type"], ["map_centre", "lat_lon", "name_search"])){
+			if(!in_array($_POST["source_type"], ["map_centre", "lat_lon"])){
 				$this->index();
 				return;
 			}

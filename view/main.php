@@ -23,10 +23,6 @@
         <option value="W">zapadno</option>
     </select>
     <br/>
-    <input type="radio" name="source_type" id="name_search" value="name_search"/>
-    <label for="name_search">Pretraživanje po dijelu imena:</label>
-    <input type="text" name="text_name_search"/>
-    <br/>
 
     <button type="submit" name="add_pt1">Dodaj ishodište!</button>
     <button type="submit" name="add_pt2">Dodaj odredište!</button>

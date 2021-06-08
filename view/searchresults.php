@@ -37,13 +37,24 @@ $(document).ready(function()
 {
     loadMap();
 
+
     a.forEach(function(tocka)
     {
         let span = $("<span>");
         span.attr("id", "tocka_"+tocka.id);
         span.html(tocka.lat+"N " + tocka.lon + "E " + tocka.name);
         $("body").append(span).append("<br/>");
+        let element = document.createElement('div');
+        element.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=25&color=DC4C3F&icon=fa-microchip&hoffset=1" />';
+        let marker = new ol.Overlay({
+            position: ol.proj.fromLonLat([tocka.lon, tocka.lat]),
+            positioning: 'center-center',
+            element: element,
+            stopEvent: false
+        });
+        openLayerMap.addOverlay(marker);
     });
+
     
     $("body").on('click', "span", function(){
         let id = $(this).attr("id").substr(6);
@@ -54,7 +65,8 @@ $(document).ready(function()
             }
         }
         openLayerMap.getView().setCenter(ol.proj.fromLonLat([tocka.lon, tocka.lat]));
-        openLayerMap.getView().setZoom(15);
+        openLayerMap.getView().setZoom(17);
+        $("html, body").animate({ scrollTop: 0 }, "slow");
     })
 
 });
