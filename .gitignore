@@ -1,0 +1,8 @@
+composer*
+/venv/
+.idea/
+vendor/
+report/
+app/init.php
+
+
