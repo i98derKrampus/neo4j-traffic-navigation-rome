@@ -63,8 +63,9 @@ $(document).ready(function()
                     echo $pt1_lat;
                 }?>";
             if(source_lat !== "null"){
-                let source_lon = <?php echo $pt1_lon;?>;
+                let source_lon = "<?php echo $pt1_lon;?>";
                 source_lat = parseFloat(source_lat);
+                source_lon = parseFloat(source_lon);
                 openLayerMap.getView().setCenter(ol.proj.fromLonLat([source_lon, source_lat]));
                 $("html, body").animate({ scrollTop: 0 }, "slow");
             }
@@ -77,8 +78,9 @@ $(document).ready(function()
                     echo $pt2_lat;
                 }?>";
             if(target_lat !== "null"){
-                let target_lon = <?php echo $pt2_lon;?>;
+                let target_lon = "<?php echo $pt2_lon;?>";
                 target_lat = parseFloat(target_lat);
+                target_lon = parseFloat(target_lon);
                 openLayerMap.getView().setCenter(ol.proj.fromLonLat([target_lon, target_lat]));
                 $("html, body").animate({ scrollTop: 0 }, "slow");
             }
@@ -123,8 +125,9 @@ function loadMap(centerLat = 41.8988, centerLon = 12.5451)
             }
         ?>";
     if(source_lat !== "null"){
-        let source_lon = <?php echo $pt1_lon;?>;
+        let source_lon = "<?php echo $pt1_lon;?>";
         source_lat = parseFloat(source_lat);
+        source_lon = parseFloat(source_lon);
         let sourceMarker_div = document.createElement('div');
         sourceMarker_div.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=40&color=0000FF&icon=fa-microchip&hoffset=1" />';
         sourceMarker = new ol.Overlay({
@@ -144,8 +147,9 @@ function loadMap(centerLat = 41.8988, centerLon = 12.5451)
             }
         ?>";
     if(target_lat !== "null"){
-        let target_lon = <?php echo $pt2_lon;?>;
+        let target_lon = "<?php echo $pt2_lon;?>";
         target_lat = parseFloat(target_lat);
+        target_lon = parseFloat(target_lon);
         let targetMarker_div = document.createElement('div');
         targetMarker_div.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=40&color=0000FF&icon=fa-microchip&hoffset=1" />';
         targetMarker = new ol.Overlay({
