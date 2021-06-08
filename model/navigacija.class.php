@@ -2,28 +2,7 @@
 
 class Navigacija
 {
-    function getLOIById( $id )
-	{
-		$db = DB::getConnection();
-
-		$results = $db->run(
-			'MATCH (n:Lokacija_od_interesa) 
-				WHERE n.id = $id
-				RETURN n;', //The query is a required parameter
-			['id' => $id],  //Parameters can be optionally added
-			'backup' //The default connection can be overridden
-		);
-        $row = false;
-		foreach($results as $item){
-			$row = $item->get('n');
-		}
-        
-        if( $row === false )
-            return null;
-		else
-			return new Lokacija_od_interesa( $row['id'], $row['x'], $row['y'],$row['lat'], $row['lon'], $row['name']);
-	}
-
+	
 	function getTockaById( $id )
 	{
 		$db = DB::getConnection();
@@ -43,7 +22,7 @@ class Navigacija
         if( $row === false )
             return null;
 		else
-			return new Tocka( $row['id'], $row['x'], $row['y'],$row['lat'], $row['lon']);
+			return new Tocka( $row['id'], $row['x'], $row['y'],$row['lat'], $row['lon'], $row['name']);
 	}
 
 	function getClosestTockaFromLatLon($lat, $lon){
@@ -60,7 +39,7 @@ class Navigacija
 
 		$row = $results[0]->get('p');
 
-		return new Tocka($row['id'], $row['x'], $row['y'], $row['lat'], $row['lon']);
+		return new Tocka($row['id'], $row['x'], $row['y'], $row['lat'], $row['lon'], $row['name']);
 	}
 
 	
