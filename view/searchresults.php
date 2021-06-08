@@ -37,7 +37,8 @@ $(document).ready(function()
 {
     loadMap();
 
-
+    let i = 0;
+    let j = a.length-1;
     a.forEach(function(tocka)
     {
         let span = $("<span>");
@@ -45,7 +46,11 @@ $(document).ready(function()
         span.html(tocka.lat+"N " + tocka.lon + "E " + tocka.name);
         $("body").append(span).append("<br/>");
         let element = document.createElement('div');
-        element.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=25&color=DC4C3F&icon=fa-microchip&hoffset=1" />';
+        if(i === 0 || i === j){
+            element.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=40&color=0000FF&icon=fa-microchip&hoffset=1" />';
+        } else{
+            element.innerHTML = '<img src="https://cdn.mapmarker.io/api/v1/fa/stack?size=25&color=DC4C3F&icon=fa-microchip&hoffset=1" />';
+        }
         let marker = new ol.Overlay({
             position: ol.proj.fromLonLat([tocka.lon, tocka.lat]),
             positioning: 'center-center',
@@ -53,6 +58,7 @@ $(document).ready(function()
             stopEvent: false
         });
         openLayerMap.addOverlay(marker);
+        i++;
     });
 
     
