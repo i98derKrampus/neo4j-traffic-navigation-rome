@@ -82,8 +82,8 @@ function updateCenterMap()
         'EPSG:4326'
     );
 
-    $("#map_lat").val(coords[0].toString());
-    $("#map_lon").val(coords[1].toString());
+    $("#map_lat").val(coords[1].toString());
+    $("#map_lon").val(coords[0].toString());
 }
 
 
