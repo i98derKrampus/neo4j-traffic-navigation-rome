@@ -133,7 +133,7 @@ class Navigacija
 		
 		$results = $db->run(
 						'MATCH (source:Tocka {id: $id1}), (target:Tocka {id: $id2})
-						CALL gds.beta.shortestPath.dijkstra.stream("dijkstratest1", {
+						CALL gds.beta.shortestPath.dijkstra.stream("dijkstratest2", {
 							sourceNode: id(source),
 							targetNode: id(target),
 							relationshipWeightProperty: "expected_time"
@@ -174,7 +174,7 @@ class Navigacija
 		
 		$results = $db->run(
 						'match (source:Tocka {id:$id1}), (target:Tocka {id:$id2})
-						call gds.beta.shortestPath.astar.stream("astartest1",{
+						call gds.beta.shortestPath.astar.stream("astartest2",{
 							sourceNode: id(source),
 							targetNode: id(target),
 							latitudeProperty: "latitude",
